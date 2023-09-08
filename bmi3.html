@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BMI CALUCULATOR</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js"></script>
+	
+<style>
+body {
+text-align: center;
+font-family: Arial, Helvetica, sans-serif;       
+}
+.gradient-heading {
+  display: grid;
+  place-items: center;  
+  font-size: 100px;
+  font-weight: 700;
+  line-height: 73px;
+  letter-spacing: 5px;
+  text-align: center;
+  background: -o-linear-gradient(45deg,#ff8a00,#e52e71,#204b00,#7a00ff);
+  background: linear-gradient(45deg,#ff8a00,#e52e71,#204b00,#7a00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 300% 300%;
+  -webkit-animation: gradient-text 8s ease infinite;
+          animation: gradient-text 8s ease infinite;
+  
+}
+@-webkit-keyframes gradient-text {
+  0% {
+    background-position: 0% 50%;
+  }
+    50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes gradient-text {
+  0% {
+    background-position: 0% 50%;
+  }
+    50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+h3 {
+color  : #12192c;
+font-weight:900;
+}
+.result{
+  color  : #12192c;
+font-weight:900;
+}
+.para
+{
+  color  : #12192c;
+  font-weight:750;
+  font-size: 20px;
+}
+.container {
+	display: flex;
+	flex-direction: row;
+	height: 10cm;
+	gap   : 3cm;
+}
+
+.container > div {
+	height: 10cm;
+	padding: 10px;
+	width: 40%;
+	background-color: #A9C9FF;
+  background-image: linear-gradient(180deg, #A9C9FF 0%, #FFBBEC 100%);
+	margin: 10px 50px;
+	border-radius: 30px;
+}
+.height[type=text] {
+  width: 50%;
+  padding: 10px 23px;
+  box-sizing: border-box;
+  border: 2px solid red;
+  border-radius: 10px;
+  font-size: 20px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+.weight[type=text] {
+  width: 50%;
+  padding: 10px 23px;
+  box-sizing: border-box;
+  border: 2px solid red;
+  border-radius: 10px;
+  font-size: 20px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+.button{
+  display: inline-block;
+  padding: 13px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: red;
+  border-radius: 10px;
+  box-shadow:  0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);;
+}
+.button:hover {background-color: pink}
+
+.button:active {
+  box-shadow:  0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);;
+  transform: translateY(4px);
+}
+
+@media only screen and (max-width: 768px) {
+	.container {
+		flex-direction: column;
+		height: auto;
+	}
+	
+	.column {
+		height: 6cm;
+		width : 50%;
+		margin-bottom: 3cm;
+	}
+}
+.rating
+{
+  text-align: center;
+  width: 70%;
+  padding: 5px 5px;
+  box-sizing: border-box;
+  border: 3px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  font-size: 20px;
+  margin: auto;
+}
+.center {
+  margin : auto;
+  width  : 60%;
+  padding: 5px;
+}
+footer {
+  position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: #f5f5f5;
+	color: #000000;
+	text-align: center;
+}
+</style>
+</head>
+
+<body style="background-image: url('https://christinethenutritionist.com/wp-content/uploads/2020/09/BMI-Final-1536x864.jpg');">
+	<h2 class="gradient-heading">𝓑𝓜𝓘 𝓒𝓐𝓛𝓒𝓤𝓛𝓐𝓣𝓞𝓡</h2>
+	<div class="container">
+	   <div class="column">
+        <h1>𝑬𝑵𝑻𝑬𝑹 𝒀𝑶𝑼𝑹 𝑫𝑬𝑻𝑨𝑰𝑳𝑺</h1>
+        <p class="para">Height in centimeters :</p>
+        <input class="height" type="text">
+        <p class="para">Weight in kilograms :</p>
+        <input class="weight" type="text"><br><br>
+        <button class="button"> Calculate</button>
+       </div>
+
+		<div class="column">
+		     <h1 class="result"></h1>
+		  <div class ="center">
+		     <h2 class ="rating"></h2>
+             <h4 class="info"><h4>
+          </div>
+		</div>
+	</div>	    
+<script>
+var heightInput = document.querySelector(".height");
+var weightInput = document.querySelector(".weight");
+var calculateButton = document.querySelector(".button");
+var result = document.querySelector(".result");
+var rating = document.querySelector(".rating");
+var info = document.querySelector(".info");
+var BMI, height, weight;
+
+calculateButton.addEventListener("click", ()=>{
+   
+    height = heightInput.value;
+    weight = weightInput.value;
+    meter = height/100;
+    bmindex = weight/(meter**2);
+    result.innerText = "𝒀𝑶𝑼𝑹  𝑩𝑴𝑰 𝑽𝑨𝑳𝑼𝑬 𝑰𝑺: "+bmindex.toFixed(2);
+
+if(bmindex <= 18.5){      
+rating.innerHTML="𝐔𝐍𝐃𝐄𝐑𝐖𝐄𝐈𝐆𝐇𝐓"
+info.innerHTML="A lean BMI can indicate that your weight maybe too low. You should consult your physician to determine if you should gain weight, as low body mass can decrease your body's immune system, which could lead to ilness such as disappearance of periods (women), bone loss, malnutrition and other conditions. The lower your BMI the greater these risks become."
+}
+else if(bmindex > 18.5 && bmindex < 25){
+rating.innerHTML="𝐍𝐎𝐑𝐌𝐀𝐋 𝐖𝐄𝐈𝐆𝐇𝐓"
+info.innerHTML="People whose BMI is within 18.5 to 24.9 possess the ideal amount of body weight, associated with living longest, the lowest incidence of serious ilness, as well as being perceived as more physically attractive than people with BMI in higher or lower ranges.However, it may be a good idea to check your Waist Circumference and keep it within the recommended limits"
+}
+else if(bmindex > 24.99 && bmindex < 30){
+rating.innerHTML="𝐎𝐕𝐄𝐑𝐖𝐄𝐈𝐆𝐇𝐓"
+info.innerHTML="People falling in this BMI range are considered overweight and would benefit from finding healthy ways to lower their weight, such as diet and exercise. Individuals who fall in this range are at increased risk for a variety of ilnesses. If your BMI is 27-29.99 your risk of health problems becomes higher. In a recent study an increased rate of blood pressure, diabetes and heart disease was recorded at 27.3 for women and 27.8 for men.check your Waist Circumference and compare it with the recommended limits."
+}
+else if(bmindex > 29.99 && bmindex < 35){
+rating.innerHTML="𝐎𝐛𝐞𝐬𝐢𝐭𝐲 (𝐂𝐥𝐚𝐬𝐬 𝟏)"
+info.innerHTML="Individuals with a BMI of 30-34.99 are in a physically unhealthy condition, which puts them at risk for serious ilnesses such as heart disease, diabetes, high blood pressure, gall bladder disease, and some cancers. This holds especially true if you have a larger than recommended Waist Size. These people would benefit greatly by modifying their lifestyle. Ideally, see your doctor and consider reducing your weight by 5-10 percent. Such a weight reduction will result in considerable health improvements."
+}
+else if(bmindex > 34.99 && bmindex < 40){
+rating.innerHTML="𝐎𝐛𝐞𝐬𝐢𝐭𝐲 (𝐂𝐥𝐚𝐬𝐬  𝟐)"
+info.innerHTML="If you have a BMI of 35-39.99 your risk of weight-related health problems and even death, is severe. See your doctor and reduce your weight to a lower BMI."
+}
+else if(bmindex >= 40){
+rating.innerHTML="𝐌𝐨𝐫𝐛𝐢𝐝 𝐎𝐛𝐞𝐬𝐢𝐭𝐲"
+info.innerHTML="With a BMI of 40+ you have an extremely high risk of weight-related disease and premature death. Indeed, you may have already been suffering from a weight-related condition. For the sake of your health it is very important to see your doctor and get specialists help for your condition."
+}
+});
+
+</script>
+<div><br><br><br><br><br><div>
+<footer>
+  <P>copyrights@shankar23-  reserved</P>
+</footer>
+</body>
+</html>
